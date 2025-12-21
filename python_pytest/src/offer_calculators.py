@@ -18,7 +18,9 @@ class ThreeForTwoCalculator(OfferCalculator):
         remaining_items = quantity_as_int % 3
 
         # Calculate total with discount
-        total_with_discount = (number_of_sets * 2 * unit_price) + (remaining_items * unit_price)
+        total_with_discount = (number_of_sets * 2 * unit_price) + (
+            remaining_items * unit_price
+        )
         total_without_discount = quantity * unit_price
         discount_amount = total_without_discount - total_with_discount
 

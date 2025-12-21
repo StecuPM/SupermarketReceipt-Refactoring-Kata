@@ -234,4 +234,3 @@ class TestLargeQuantities:
 
         assert 67.00 == pytest.approx(receipt.total_price(), 0.01)
         assert 1 == len(receipt.discounts)
-        

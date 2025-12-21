@@ -24,6 +24,8 @@ class ShoppingCart:
 
         # Update aggregated quantities
         if product in self._product_quantities.keys():
-            self._product_quantities[product] = self._product_quantities[product] + quantity
+            self._product_quantities[product] = (
+                self._product_quantities[product] + quantity
+            )
         else:
             self._product_quantities[product] = quantity

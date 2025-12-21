@@ -14,7 +14,7 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item(products['milk'])
+        cart.add_item(products["milk"])
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
@@ -30,7 +30,7 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
+        cart.add_item_quantity(products["toothbrush"], 3)
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
@@ -46,7 +46,7 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['apples'], 2.5)
+        cart.add_item_quantity(products["apples"], 2.5)
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
@@ -62,7 +62,7 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
+        cart.add_item_quantity(products["toothbrush"], 3)
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
@@ -78,13 +78,13 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item(products['milk'])
+        cart.add_item(products["milk"])
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
         output = printer.print_receipt(receipt)
 
-        lines = output.split('\n')
+        lines = output.split("\n")
         for line in lines:
             if line.strip():
                 assert len(line) <= 41
@@ -95,7 +95,7 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item(products['milk'])
+        cart.add_item(products["milk"])
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter(columns=50)
@@ -110,8 +110,8 @@ class TestReceiptPrinter:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
-        cart.add_item_quantity(products['apples'], 2.0)
+        cart.add_item_quantity(products["toothbrush"], 3)
+        cart.add_item_quantity(products["apples"], 2.0)
 
         receipt = teller.checks_out_articles_from(cart)
         printer = ReceiptPrinter()
@@ -131,9 +131,9 @@ class TestReceiptCalculations:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item(products['milk'])
-        cart.add_item(products['rice'])
-        cart.add_item_quantity(products['apples'], 1.5)
+        cart.add_item(products["milk"])
+        cart.add_item(products["rice"])
+        cart.add_item_quantity(products["apples"], 1.5)
 
         receipt = teller.checks_out_articles_from(cart)
 
@@ -145,9 +145,9 @@ class TestReceiptCalculations:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
-        cart.add_item(products['rice'])
-        cart.add_item(products['milk'])
+        cart.add_item_quantity(products["toothbrush"], 3)
+        cart.add_item(products["rice"])
+        cart.add_item(products["milk"])
 
         receipt = teller.checks_out_articles_from(cart)
 
@@ -159,7 +159,7 @@ class TestReceiptCalculations:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item(products['milk'])
+        cart.add_item(products["milk"])
 
         receipt = teller.checks_out_articles_from(cart)
 
@@ -172,7 +172,7 @@ class TestReceiptCalculations:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
+        cart.add_item_quantity(products["toothbrush"], 3)
 
         receipt = teller.checks_out_articles_from(cart)
 
@@ -192,14 +192,14 @@ class TestReceiptItems:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 2)
+        cart.add_item_quantity(products["toothbrush"], 2)
 
         receipt = teller.checks_out_articles_from(cart)
 
         assert 1 == len(receipt.items)
         item = receipt.items[0]
 
-        assert item.product == products['toothbrush']
+        assert item.product == products["toothbrush"]
         assert item.quantity == 2
         assert item.price == 0.99
         assert item.total_price == pytest.approx(1.98, 0.01)
@@ -210,13 +210,13 @@ class TestReceiptItems:
         teller = create_teller_with_standard_offers(catalog, products)
 
         cart = ShoppingCart()
-        cart.add_item_quantity(products['toothbrush'], 3)
+        cart.add_item_quantity(products["toothbrush"], 3)
 
         receipt = teller.checks_out_articles_from(cart)
 
         assert 1 == len(receipt.discounts)
         discount = receipt.discounts[0]
 
-        assert discount.product == products['toothbrush']
+        assert discount.product == products["toothbrush"]
         assert "3 for 2" in discount.description
         assert discount.discount_amount < 0

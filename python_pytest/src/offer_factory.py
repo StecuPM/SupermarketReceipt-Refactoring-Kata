@@ -3,7 +3,7 @@ from offer_calculators import (
     ThreeForTwoCalculator,
     PercentageDiscountCalculator,
     TwoForAmountCalculator,
-    FiveForAmountCalculator
+    FiveForAmountCalculator,
 )
 
 
